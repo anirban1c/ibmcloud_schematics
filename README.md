@@ -15,3 +15,7 @@ Add site specific IP's for public access
 
 Framework to generate all environment specifc Terraform 
 Config management of resources
+
+TODO:
+
+Create a DS for Datadog exposed IP's that can be referenced for all ACL/SG rules
