@@ -20,10 +20,10 @@ COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
 # Configure apt and install packages
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+    && apt-get -y install --no-install-recommends apt-utils dialog build-essential 2>&1 \
     #
     # Verify git, process tools, lsb-release (common in install instructions for CLIs) installed
-    && apt-get -y install git openssh-client less iproute2 procps iproute2 lsb-release \
+    && apt-get -y install git openssh-client less iproute2 procps iproute2 lsb-release curl \
     #
     # Install pylint
     && /opt/conda/bin/pip install pylint \
@@ -48,3 +48,25 @@ RUN apt-get update \
 USER vscode
 ENV HOME /home/vscode
 WORKDIR /home/vscode
+
+# install ibmcloud cli
+#RUN curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+
+# install ibmcloud plugins - all default plugins
+RUN wget https://ibm.biz/idt-installer && \
+    chmod +x idt-installer && \
+    ./idt-installer && \
+    rm idt-installer -rf
+
+
+RUN ibmcloud plugin install event-streams
+#RUN ibmcloud plugin install kui
+RUN ibmcloud plugin install schematics
+RUN ibmcloud plugin install vpc-infrastructure
+RUN ibmcloud plugin install cloud-dns-services
+
+# Setting the ENTRYPOINT to docker-init.sh will configure non-root access to 
+# the Docker socket if "overrideCommand": false is set in devcontainer.json. 
+# The script will also execute CMD if you need to alter startup behaviors.
+#ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
+#CMD [ "sleep", "infinity" ]

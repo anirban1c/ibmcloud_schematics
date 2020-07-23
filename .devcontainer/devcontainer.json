@@ -3,7 +3,8 @@
 {
 	"name": "Python 3 - Miniconda",
 	"context": "..",
-	"dockerFile": "Dockerfile",
+	//"dockerFile": "Dockerfile",
+	"image" : "anirban1c/dev-ibm-schematics",
 	"workspaceFolder": "/ibmcloud_schematics",
 	"workspaceMount": "source=/mnt/sde1/apps/oss/ibmcloud_schematics,target=/ibmcloud_schematics,type=bind,consistency=delegated",
 
@@ -30,9 +31,13 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	// Load environment vars 
+	"runArgs": ["--env-file","devcontainer.env"],
+
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sudo chown vscode ibmcloud_schematics-vol--here",
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	//"overrideCommand": false,
 	"remoteUser": "vscode"
 }
