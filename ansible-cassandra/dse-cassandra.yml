@@ -1,0 +1,68 @@
+---
+- name: Example Playbook for the locp.cassandra Role
+
+  hosts: ussouth1
+
+  remote_user: root
+  tasks:
+    - debug: var=inventory_hostname
+    - debug: var=ansible_hostname
+    - debug: var=hostvars
+
+  vars:
+    cassandra_configuration:
+      authenticator: PasswordAuthenticator
+      cluster_name: emea-cassandra-cdt
+      commitlog_directory: /data/cassandra/commitlog
+      commitlog_sync: periodic
+      commitlog_sync_period_in_ms: 10000
+      data_file_directories:
+        - /data/cassandra/data
+      endpoint_snitch: GossipingPropertyFileSnitch
+      hints_directory: "/data/cassandra/hints"
+      listen_address: "{{ ansible_default_ipv4.address }}"
+      partitioner: org.apache.cassandra.dht.Murmur3Partitioner
+      saved_caches_directory: /data/cassandra/saved_caches
+      seed_provider:
+        - class_name: "org.apache.cassandra.locator.SimpleSeedProvider"
+          parameters:
+            - seeds: "10.116.1.10, 10.116.1.9, 10.116.2.10, 10.116.2.11, 172.19.0.4, 172.19.0.5,172.19.64.9,172.19.64.10"
+      start_native_transport: true
+
+    cassandra_configure_apache_repo: true
+    # Create an alternative directories structure for the Cassandra data.
+    # In this example, the will be a directory called /data owned by root
+    # with rwxr-xr-x permissions.  It will have a series of sub-directories
+    # all of which will be defaulted to being owned by the cassandra user
+    # with rwx------ permissions.
+    cassandra_directories:
+      root:
+        group: root
+        mode: "0755"
+        owner: root
+        paths:
+          - /data
+      data:
+        paths:
+          - /data/cassandra
+          - /data/cassandra/commitlog
+          - /data/cassandra/data
+          - /data/cassandra/hints
+          - /data/cassandra/saved_caches
+    cassandra_regex_replacements:
+      - path: cassandra-env.sh
+        line: 'MAX_HEAP_SIZE="512M"'
+        regexp: '^#MAX_HEAP_SIZE="4G"'
+      - path: cassandra-env.sh
+        line: 'HEAP_NEWSIZE="100M"'
+        regexp: '^#HEAP_NEWSIZE="800M"'
+      - path: cassandra-rackdc.properties
+        line: 'dc={{ hostvars[inventory_hostname_short].dc }}'
+        regexp: '^dc='
+      - path: cassandra-rackdc.properties
+        line: 'rack={{ hostvars[inventory_hostname_short].rack }}'
+        regexp: '^rack='
+    cassandra_repo_apache_release: 311x
+
+  roles:
+    - role: ansible-role-cassandra

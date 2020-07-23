@@ -1,0 +1,37 @@
+- name: Set  Configuration File for cass logs Location (RedHat)
+  set_fact:
+    dd_cassandra_configuration_directory: /etc/datadog-agent/conf.d/cassandra.d/conf.yaml
+    dd_cassandra_configuration_file: /etc/datadog-agent/conf.d/cassandra.d/conf.yaml
+  when:
+    - ansible_os_family is defined
+    - ansible_os_family == 'RedHat'
+    - dd_cassandra_configuration_file is not defined
+
+- name: Apply Cassandra Configuration
+  template:
+    src: "{{ dd_cassandra_configuration_templ }}"
+    dest: "{{ dd_cassandra_configuration_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart datadog-agent
+
+- name: Set  Configuration File Location for cass nodetool (RedHat)
+  set_fact:
+    dd_nt_cassandra_configuration_directory: /etc/datadog-agent/conf.d/cassandra_nodetool.d/conf.yaml
+    dd_nt_cassandra_configuration_file: /etc/datadog-agent/conf.d/cassandra_nodetool.d/conf.yaml
+  when:
+    - ansible_os_family is defined
+    - ansible_os_family == 'RedHat'
+    - dd_nt_cassandra_configuration_file is not defined
+
+- name: Apply Cassandra Configuration
+  template:
+    src: "{{ dd_nt_cassandra_configuration_templ }}"
+    dest: "{{ dd_nt_cassandra_configuration_file }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart datadog-agent

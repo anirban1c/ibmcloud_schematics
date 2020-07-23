@@ -1,0 +1,8 @@
+.kitchen/
+.python-version
+*.pyc
+*.rake_tasks~
+*.swp
+Gemfile.lock
+molecule/default/molecule.yml
+pytestdebug.log

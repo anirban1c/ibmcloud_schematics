@@ -1,0 +1,37 @@
+[opscentereude1]
+opscenter ansible_host=172.19.0.27 ansible_port=22 ansible_user=root
+
+[eude1]
+node1 ansible_host=172.19.0.4 ansible_port=22 ansible_user=root rack=RACK1 dc=EU-DE-1
+node2 ansible_host=172.19.0.5 ansible_port=22 ansible_user=root rack=RACK1 dc=EU-DE-1
+node3 ansible_host=172.19.0.6 ansible_port=22 ansible_user=root rack=RACK1 dc=EU-DE-1
+
+[eude2]
+node21 ansible_host=172.19.64.9 ansible_port=22 ansible_user=root rack=RACK2 dc=EU-DE-2
+node22 ansible_host=172.19.64.11 ansible_port=22 ansible_user=root rack=RACK2 dc=EU-DE-2
+node23 ansible_host=172.19.64.10 ansible_port=22 ansible_user=root rack=RACK2 dc=EU-DE-2
+
+[ussouth1]
+nodeUS1 ansible_host=10.116.1.11 ansible_port=22 ansible_user=root rack=RACK1 dc=US-SOUTH-1
+nodeUS2 ansible_host=10.116.1.10 ansible_port=22 ansible_user=root rack=RACK1 dc=US-SOUTH-1
+nodeUS3 ansible_host=10.116.1.9 ansible_port=22 ansible_user=root rack=RACK1 dc=US-SOUTH-1
+
+[ussouth2]
+nodeUS21 ansible_host=10.116.2.10 ansible_port=22 ansible_user=root rack=RACK2 dc=US-SOUTH-2
+nodeUS22 ansible_host=10.116.2.11 ansible_port=22 ansible_user=root rack=RACK2 dc=US-SOUTH-2
+nodeUS23 ansible_host=10.116.2.9 ansible_port=22 ansible_user=root rack=RACK2 dc=US-SOUTH-2
+
+[useast1]
+nodeUS21 ansible_host=10.116.7.14 ansible_port=22 ansible_user=root rack=RACK1 dc=US-EAST-1
+nodeUS22 ansible_host=10.116.7.13 ansible_port=22 ansible_user=root rack=RACK1 dc=US-EAST-1
+nodeUS23 ansible_host=10.116.7.15 ansible_port=22 ansible_user=root rack=RACK1 dc=US-EAST-1
+
+[useast2]
+nodeUS21 ansible_host=10.116.8.10 ansible_port=22 ansible_user=root rack=RACK2 dc=US-EAST-2
+nodeUS22 ansible_host=10.116.8.11 ansible_port=22 ansible_user=root rack=RACK2 dc=US-EAST-2
+nodeUS23 ansible_host=10.116.8.12 ansible_port=22 ansible_user=root rack=RACK2 dc=US-EAST-2
+
+[useast3]
+nodeUS21 ansible_host=10.116.9.11 ansible_port=22 ansible_user=root rack=RACK3 dc=US-EAST-3
+nodeUS22 ansible_host=10.116.9.11 ansible_port=22 ansible_user=root rack=RACK3 dc=US-EAST-3
+nodeUS23 ansible_host=10.116.9.11 ansible_port=22 ansible_user=root rack=RACK3 dc=US-EAST-3

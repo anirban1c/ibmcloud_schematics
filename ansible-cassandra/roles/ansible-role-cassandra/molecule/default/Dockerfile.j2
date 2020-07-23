@@ -1,0 +1,40 @@
+# Molecule managed
+
+FROM {{ item.image }}
+
+{% if item.image == 'centos:7' %}
+RUN yum makecache fast \
+  && yum install -y python sudo yum-plugin-ovl bash epel-release \
+  && yum install -y iproute initscripts \
+  && yum clean all
+{% elif item.image == 'centos:8' %}
+RUN yum install -y dnf \
+  && yum clean all \
+  && rm -f /etc/yum.repos.d/epel-*.repo /etc/yum.repos.d/CentOS-Extras.repo \
+  && dnf makecache \
+  && dnf --assumeyes install python36 sudo python36-devel python*-dnf bash iproute initscripts \
+  && dnf clean all
+{% elif item.image == 'debian:10' %}
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get update --fix-missing
+RUN apt-get install -y --fix-missing apt-transport-https apt-utils python-apt sudo bash ca-certificates \
+  || apt-get install -y --fix-missing apt-transport-https apt-utils python-apt sudo bash ca-certificates
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
+RUN echo 'deb http://repos.azulsystems.com/debian stable main' > /etc/apt/sources.list.d/zulu.list
+RUN apt-get clean \
+    && apt-get update \
+    && apt-get install -y --fix-missing zulu-8 \
+    || apt-get install -y --fix-missing zulu-8
+{% elif item.image == 'fedora:30' or item.image == 'fedora:31' %}
+RUN dnf makecache \
+  && dnf --assumeyes install python sudo python-devel python*-dnf bash \
+  && dnf clean all
+{% else %}
+RUN apt-get clean
+RUN apt-get update
+RUN apt-get update --fix-missing
+RUN apt-get install -y --fix-missing apt-transport-https apt-utils python-apt sudo bash ca-certificates \
+  || apt-get install -y --fix-missing apt-transport-https apt-utils python-apt sudo bash ca-certificates
+RUN apt-get clean
+{% endif %}

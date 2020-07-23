@@ -3,8 +3,8 @@
 {
 	"name": "Python 3 - Miniconda",
 	"context": "..",
-	//"dockerFile": "Dockerfile",
-	"image" : "anirban1c/dev-ibm-schematics",
+	"dockerFile": "Dockerfile",
+	//"image" : "anirban1c/dev-ibm-schematics",
 	"workspaceFolder": "/ibmcloud_schematics",
 	"workspaceMount": "source=/mnt/sde1/apps/oss/ibmcloud_schematics,target=/ibmcloud_schematics,type=bind,consistency=delegated",
 
@@ -32,7 +32,7 @@
 	// "forwardPorts": [],
 
 	// Load environment vars 
-	"runArgs": ["--env-file","devcontainer.env"],
+	"runArgs": ["--env-file",".devcontainer/devcontainer.env"],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sudo chown vscode ibmcloud_schematics-vol--here",

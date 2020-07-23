@@ -1,0 +1,56 @@
+- hosts: useast1
+
+  vars:
+    datadog_agent_version: "7.16.0"
+    datadog_site: "{{ lookup('env','DATADOG_SITE') }}"
+    datadog_api_key : "{{ lookup('env','DATADOG_API_KEY') }}"
+    datadog_config:
+      tags:
+        - "ach528-vpc-cdt:cassandra-cluster"
+        - "ach528:ach528-WIP-DELETEME"
+      log_level: INFO
+      apm_config:
+        enabled: true
+        max_traces_per_second: 10
+      logs_enabled: true  # available with Agent v6 and v7
+      system_probe_config:
+        enabled: true
+
+    datadog_checks:
+      process:
+        init_config:
+        instances:
+          - name: ssh
+            search_string: ['sshd' ]
+            cpu_check_interval: 0.2
+            exact_match: true
+            ignore_denied_access: true
+
+#      cassandra:
+#        init_config:
+#        tags:
+#           - environment: ach528-vpc-cdt
+#
+#        logs:
+#          - type: file
+#            path: /var/log/cassandra/*.log
+#            source: cassandra
+#            service: "vpc-delboy-'{{ hostvars[inventory_hostname_short].dc }}'"
+#            log_processing_rules:
+#              - type: multi_line
+#                name: log_start_with_date
+#                # pattern to match: DEBUG [ScheduledTasks:1] 2019-12-30
+#                pattern: '[A-Z]+ +\[[^\]]+\] +\d{4}-\d{2}-\d{2}'
+#
+#      cassandra_nodetool:
+#        init_config:
+#        instances:
+#          - keyspaces:
+#              - "ach528_jackass_keyspace"
+#              - "ach528_diddledoo_keyspace"
+
+
+
+
+  roles:
+    - role: ansible-datadog
