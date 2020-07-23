@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.128.0/containers/python-3-miniconda
+{
+	"name": "Python 3 - Miniconda",
+	"context": "..",
+	"dockerFile": "Dockerfile",
+	"workspaceFolder": "/ibmcloud_schematics",
+	"workspaceMount": "source=/mnt/sde1/apps/oss/ibmcloud_schematics,target=/ibmcloud_schematics,type=bind,consistency=delegated",
+
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"python.pythonPath": "/opt/conda/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.linting.pylintPath": "/opt/conda/bin/pylint"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python"
+	],
+
+	"mounts": [
+		"source=ibmcloud_schematics-vol--here,target=/home/anirban/.vscode-server/extensions,type=volume",
+		//"source=ibmcloud_schematics-vol--here-insiders,target=/home/vscode/.vscode-server-insiders/extensions,type=volume",
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo chown vscode ibmcloud_schematics-vol--here",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
