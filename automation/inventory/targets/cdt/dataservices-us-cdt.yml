@@ -1,0 +1,67 @@
+
+classes:
+  - common
+  - common.resources
+  - common.schematics
+  - common.data
+  - common.docs
+
+parameters:
+    name: dataservices-us-cdt
+    region: us-east
+    env: cdt
+    tags: "aop-cdt:ach528"
+
+    provider:
+      datadog:
+        remote_ds:
+          workspace_id: datadog-cdt-bfe381d4-278f-43
+
+
+    kapitan:
+        labels:
+            cdt: us
+
+    resources:
+#        access:
+#            - name: xxxxx
+#              rules:
+#                - ops_in:
+#                  name: ops_in
+#                  remote: 0.0.0.0/0
+#                  direction: inbound
+#                  proto: tcp
+#                  port_min: 8888
+#                  port_max: 8888
+
+        modules:
+            dd_ips:
+              source: "../../../tf-modules/dd-read-ds"
+
+            vpc_stack:
+                source: "../../../tf-modules/tf-vpc-module-with-bastion"
+                env: cdt
+                region: ${region}
+                prefix: ${envs:vpcs:prefix}
+                tag: ach528-aop-cdt
+                vpc_name: ${name}
+                resource_group_name: ${envs:vpcs:resource_group}
+                zone-1: us-east-1
+                zone-2: us-east-2
+                zone-3: us-east-3
+                zone1_cidr: ${envs:vpcs:regions:us-east:cidrs:us-east-1}
+                zone2_cidr: ${envs:vpcs:regions:us-east:cidrs:us-east-2}
+                zone3_cidr: ${envs:vpcs:regions:us-east:cidrs:us-east-3}
+                zone1-jmp-cidr: ${envs:vpcs:regions:us-east:cidrs:us-east-1}
+                zone1-opscenter-cidr: ${envs:vpcs:regions:us-east:cidrs:us-east-1}
+                fip_name: ${envs:vpcs:prefix}-fip
+                image_name: ${envs:vpcs:image}
+                instance_profile: ${envs:vpcs:vsi:profile}
+                instance_type: dataservices
+                volume_capacity: ${envs:vpcs:volumes:capacity}
+                volume_iops: ${envs:vpcs:volumes:iops}
+                volume_profile: ${envs:vpcs:volumes:profile}
+                timeout_create: 10m
+                timeout_delete: 10m
+                vpc_ssh_keys:
+                  - "ach528-ssh-key"

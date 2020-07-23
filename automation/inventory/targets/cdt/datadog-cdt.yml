@@ -1,0 +1,72 @@
+classes:
+  - common
+  - common.schematics
+  - common.data
+
+parameters:
+  name: datadog-cdt
+  region: eu-de
+  env: cdt
+  tags: "aop-cdt:ach528"
+
+  provider:
+      ipv4_ranges:
+        - agents_ipv6
+        - api_ipv6
+        - apm_ipv6
+        - process_ipv6
+        - logs_ipv6
+        - synthetics_ipv6
+        - webhooks_ipv6
+
+  kapitan:
+    labels:
+      cdt : emea
+      datadog_readonly : datadog-public-ips
+
+
+
+#  resources:
+#    access:
+#      - name: ${prefix}-sg-dd-remote-ds
+#        rules:
+#          - sg-dd-remote-ds:
+#            name: sg-dd-remote-ds
+#            remote:
+#            direction: outbound
+#      - name: ${prefix}-sg-dd1
+#        rules:
+#          - dd-out-1:
+#            name: dd-out-1
+#            remote: 34.107.172.23/32
+#            direction: outbound
+#
+#          - dd-out-2:
+#            name: dd-out-2
+#            remote: 35.190.30.199/32
+#            direction: outbound
+#
+#          - dd-out-3:
+#            name: dd-out-3
+#            remote: 35.190.78.95/32
+#            direction: outbound
+#
+#          - dd-out-4:
+#            name: dd-out-4
+#            remote: 34.95.82.189/32
+#            direction: outbound
+#
+#          - dd-out-5:
+#            name: dd-out-5
+#            remote: 34.95.82.189/32
+#            direction: outbound
+#
+#          - dd-out-6:
+#            name: dd-out-6
+#            remote: 35.198.166.116/32
+#            direction: outbound
+#
+#          - dd-out-7:
+#            name: dd-out-7
+#            remote: 13.114.211.96/32
+#            direction: outbound

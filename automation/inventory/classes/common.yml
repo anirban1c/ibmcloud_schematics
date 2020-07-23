@@ -1,0 +1,29 @@
+parameters:
+  docker_image: anirban1c/ic-schematics
+  provider:
+    ibm:
+      version: terraform_v0.12
+      required_version: ">=0.12"
+      vpc:
+        generation: 2
+
+
+  kapitan:
+
+    compile:
+      - output_path: terraform
+        input_type: jsonnet
+        prune: false
+        output_type: json
+        input_paths:
+          - templates/tf/main.jsonnet
+
+      - output_path: scripts
+        input_type: jinja2
+        input_paths:
+          - templates/scripts
+
+    vars:
+      target: ${name}
+      tyoe: common
+

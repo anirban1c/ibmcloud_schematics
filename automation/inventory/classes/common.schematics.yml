@@ -1,0 +1,9 @@
+parameters:
+  schematics:
+    workspace:
+      name: ${name}
+      type: ${provider:ibm:version}
+      desc: Workspace for ${name}
+      url: https://eu-de.git.cloud.ibm.com/iaas/dataservices
+      branch: master
+      folder: compiled/${name}/terraform

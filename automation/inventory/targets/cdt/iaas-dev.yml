@@ -1,0 +1,69 @@
+classes:
+  - common
+  - common.schematics
+  - common.resources
+
+
+parameters:
+  name: iaas-dev
+  region: eu-de
+  zone : eu-de-1
+  env: cdt
+  tags: "aop-cdt:ach528"
+  docker_image: anirban1c/ic-schematics
+  timeouts:
+    create: 10m
+    delete: 10m
+
+
+  kapitan:
+    labels:
+      iaas: dev
+
+  resources:
+    data:
+      resource_group: aop-cdt
+      image: "ibm-redhat-7-6-minimal-amd64-1"
+      ssh_key1:
+          key: "ach528-ssh-key"
+
+
+    vpc:
+      name: dev-vpc
+      public_gateway: ${name}-public-gw
+      zone: ${zone}
+      desc: development single vsi with bastion
+
+    subnets:
+      - name: subnet-1
+        zone: ${zone}
+        ipv4_cidr_block: 192.168.1.0/24
+        timeouts: ${timeouts}
+      - name: subnet-2
+        zone: ${zone}
+        ipv4_cidr_block: 192.168.2.0/24
+        timeouts: ${timeouts}
+
+    fips:
+      name: fip-1
+      target: vsi-1
+      timeouts:
+        create: 20m
+        delete: 20m
+
+    vsis:
+      - name: vsi-1
+        zone: ${zone}
+        profile: cx2-2x4
+        net_primary: subnet-1
+        net_secondary: subnet-2
+        timeouts: ${timeouts}
+      - name: vsi-2
+        zone: ${zone}
+        profile: cx2-2x4
+        net_primary: subnet-1
+        net_secondary: subnet-2
+        timeouts: ${timeouts}
+
+
+

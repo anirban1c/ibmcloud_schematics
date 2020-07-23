@@ -1,0 +1,67 @@
+classes:
+  - common
+  - common.schematics
+  - common.resources
+
+
+parameters:
+  name: iaas-preprod
+  region: eu-de
+  zone : eu-de-1
+  env: preprod
+  tags: "aop-cdt:ach528"
+  timeouts:
+    create: 10m
+    delete: 10m
+
+
+  kapitan:
+    labels:
+      iaas: preprod
+
+  resources:
+    data:
+      resource_group: aop-preprod
+      image: "ibm-redhat-7-6-minimal-amd64-1"
+      ssh_keys:
+          key: "ach528-ssh-key"
+
+
+    vpc:
+      name: dev-vpc
+      zone: ${zone}
+      desc: development single vsi with bastion
+
+    subnets:
+      - name: subnet-1
+        zone: ${zone}
+        ipv4_cidr_block: 192.168.1.0/24
+        timeouts: ${timeouts}
+      - name: subnet-2
+        zone: ${zone}
+        ipv4_cidr_block: 192.168.2.0/24
+        timeouts: ${timeouts}
+
+    fips:
+      name: fip-1
+      target: vsi-1
+      timeouts:
+        create: 20m
+        delete: 20m
+
+    vsis:
+      - name: vsi-1
+        zone: ${zone}
+        profile: cx2-2x4
+        net_primary: subnet-1
+        net_secondary: subnet-2
+        timeouts: ${timeouts}
+      - name: vsi-2
+        zone: ${zone}
+        profile: cx2-2x4
+        net_primary: subnet-1
+        net_secondary: subnet-2
+        timeouts: ${timeouts}
+
+
+

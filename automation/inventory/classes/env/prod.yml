@@ -1,0 +1,45 @@
+parameters:
+  prefix: ach528
+
+  provider:
+    datadog:
+      ipv4_ranges:
+        - agents_ipv4
+        - api_ipv4
+        - apm_ipv4
+        - process_ipv4
+        - logs_ipv4
+        - synthetics_ipv4
+        - webhooks_ipv4
+      remote_ds:
+        workspace_id: datadog-prod-xxxxx-xxxxx
+
+  envs:
+        vpcs:
+          resource_group: aop-prod
+          image: "ibm-redhat-7-6-minimal-amd64-1"
+          prefix: ${prefix}
+          vsi:
+              profile: cx2-2x4
+          volumes:
+                profile : custom
+                capacity: 100
+                iops: 1000
+          regions:
+                  # expecting zones e.g eu-de-1/2/3 (indexing from 1)
+                  # each zone 1,2,3, in that order
+            eu-de:
+                cidrs:
+                    eu-de-1   : 10.116.19.0/24
+                    eu-de-2   : 10.116.20.0/24
+                    eu-de-3   : 10.116.21.0/24
+            jp-tok:
+                cidrs:
+                    jp-tok-1  : 10.116.22.0/24
+                    jp-tok-2  : 10.116.23.0/24
+                    jp-tok-3  : 10.116.24.0/24
+            us-east:
+                cidrs:
+                    us-east-1   : 10.116.24.0/24
+                    us-east-2   : 10.116.25.0/24
+                    us-east-3   : 10.116.26.0/24

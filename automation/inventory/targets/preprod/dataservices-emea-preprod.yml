@@ -1,0 +1,53 @@
+
+classes:
+  - common
+  - common.schematics
+  - common.resources
+  - common.docs
+  - common.data
+
+parameters:
+    name: dataservices-emea-preprod
+    region: eu-de
+    env: preprod
+    tags: "aop-cdt:ach528"
+
+    kapitan:
+      labels:
+        preprod : emea
+
+
+    resources:
+
+      modules:
+        vpc_stack:
+          source : "../../../tf-modules/tf-vpc-module-with-bastion"
+          env : preprod
+          region : eu-de
+          prefix : ${envs:vpcs:prefix}
+          tag : ach528-aop-preprod
+          vpc_name : ${name}
+          resource_group_name : ${envs:vpcs:resource_group}
+          zone1_cidr : ${envs:vpcs:regions:eu-de:cidrs:eu-de-1}
+          zone2_cidr : ${envs:vpcs:regions:eu-de:cidrs:eu-de-2}
+          zone3_cidr : ${envs:vpcs:regions:eu-de:cidrs:eu-de-3}
+          zone1-jmp-cidr : ${envs:vpcs:regions:eu-de:cidrs:eu-de-1}
+          zone1-opscenter-cidr : ${envs:vpcs:regions:eu-de:cidrs:eu-de-1}
+          fip_name : ${envs:vpcs:prefix}-fip
+          image_name : ${envs:vpcs:image}
+          instance_profile : ${envs:vpcs:vsi:profile}
+          instance_type : dataservices
+          volume_capacity : ${envs:vpcs:volumes:capacity}
+          volume_iops : ${envs:vpcs:volumes:iops}
+          volume_profile : ${envs:vpcs:volumes:profile}
+          timeout_create: 10m
+          timeout_delete: 10m
+          vpc_ssh_keys:
+            - "mbo200-sshkey"
+            - "ach528-ssh-key"
+            - "andreb-sshkey"
+            - "opscadmin-sshkey"
+            - "abl048-sshkey"
+            - "ddt010-sshkey"
+            - "eho057-sshkey"
+            - "tch166-sshkey"

@@ -1,0 +1,46 @@
+classes:
+  - common
+  - common.schematics
+  - common.data
+  - common.resources
+  - common.docs
+
+
+parameters:
+    name: dataservices-jp-cdt
+    region: jp-tok
+    env: cdt
+    tags: "aop-cdt:ach528"
+
+
+    kapitan:
+      labels:
+        cdt: jp
+
+    resources:
+      modules:
+        vpc_stack:
+            source: "../../../tf-modules/tf-vpc-module-with-bastion"
+            env: ${env}
+            region: jp-tok
+            prefix: ${envs:vpcs:prefix}
+            tag: ach528-aop-cdt
+            vpc_name: jp-ds-vpc1
+            resource_group_name: ${envs:vpcs:resource_group}
+            zone1_cidr: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-1}
+            zone2_cidr: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-2}
+            zone3_cidr: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-3}
+            zone1-jmp-cidr: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-1}
+            zone1-opscenter-cidr: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-1}
+            fip_name: ${envs:vpcs:prefix}-fip
+            image_name: ${envs:vpcs:image}
+            instance_profile: ${envs:vpcs:vsi:profile}
+            instance_type: dataservices
+            volume_capacity: ${envs:vpcs:volumes:capacity}
+            volume_iops: ${envs:vpcs:volumes:iops}
+            volume_profile: ${envs:vpcs:volumes:profile}
+            vpc_ssh_keys: var.vpc_ssh_keys.*
+            timeout_create: var.timeout_create
+
+
+
