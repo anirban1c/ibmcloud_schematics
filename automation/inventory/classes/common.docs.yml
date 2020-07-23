@@ -1,0 +1,11 @@
+parameters:
+
+  kapitan:
+
+    compile:
+      - output_path: terraform
+        input_type: jinja2
+        input_paths:
+          - templates/README.md
+
+

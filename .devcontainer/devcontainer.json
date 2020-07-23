@@ -24,7 +24,7 @@
 
 	"mounts": [
 		"source=ibmcloud_schematics-vol--here,target=/home/anirban/.vscode-server/extensions,type=volume",
-		//"source=ibmcloud_schematics-vol--here-insiders,target=/home/vscode/.vscode-server-insiders/extensions,type=volume",
+		"source=ibmcloud_schematics-vol--here-insiders,target=/home/anirban/.vscode-server-insiders/extensions,type=volume",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

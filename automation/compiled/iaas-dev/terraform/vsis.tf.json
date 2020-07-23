@@ -1,0 +1,50 @@
+{
+  "resource": {
+    "ibm_is_instance": {
+      "vsi-1": {
+        "image": "${data.ibm_is_image.ds_image.id}",
+        "keys": [
+          "${data.ibm_is_ssh_key.ssh_key1.id}"
+        ],
+        "name": "vsi-1",
+        "network_interfaces": {
+          "name": "eth1",
+          "subnet": "${ibm_is_subnet.subnet-2.id}"
+        },
+        "primary_network_interface": {
+          "subnet": "${ibm_is_subnet.subnet-1.id}"
+        },
+        "profile": "cx2-2x4",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}",
+        "timeouts": {
+          "create": "10m",
+          "delete": "10m"
+        },
+        "vpc": "${ibm_is_vpc.dev-vpc.id}",
+        "zone": "eu-de-1"
+      },
+      "vsi-2": {
+        "image": "${data.ibm_is_image.ds_image.id}",
+        "keys": [
+          "${data.ibm_is_ssh_key.ssh_key1.id}"
+        ],
+        "name": "vsi-2",
+        "network_interfaces": {
+          "name": "eth1",
+          "subnet": "${ibm_is_subnet.subnet-2.id}"
+        },
+        "primary_network_interface": {
+          "subnet": "${ibm_is_subnet.subnet-1.id}"
+        },
+        "profile": "cx2-2x4",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}",
+        "timeouts": {
+          "create": "10m",
+          "delete": "10m"
+        },
+        "vpc": "${ibm_is_vpc.dev-vpc.id}",
+        "zone": "eu-de-1"
+      }
+    }
+  }
+}

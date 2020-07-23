@@ -1,0 +1,15 @@
+{
+  "resource": {
+    "ibm_is_floating_ip": {
+      "fip-1": {
+        "name": "fip-1",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}",
+        "target": "${ibm_is_instance.vsi-1.primary_network_interface.0.id}",
+        "timeouts": {
+          "create": "20m",
+          "delete": "20m"
+        }
+      }
+    }
+  }
+}

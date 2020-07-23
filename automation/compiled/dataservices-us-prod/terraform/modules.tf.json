@@ -1,0 +1,33 @@
+{
+  "module": {
+    "vpc_stack": {
+      "env": "prod",
+      "fip_name": "ach528-fip",
+      "image_name": "ibm-redhat-7-6-minimal-amd64-1",
+      "instance_profile": "cx2-2x4",
+      "instance_type": "dataservices",
+      "prefix": "ach528",
+      "region": "us-east",
+      "resource_group_name": "aop-prod",
+      "source": "../../../tf-modules/tf-vpc-module-with-bastion",
+      "tag": "ach528-aop-prod",
+      "timeout_create": "10m",
+      "timeout_delete": "10m",
+      "volume_capacity": 100,
+      "volume_iops": 1000,
+      "volume_profile": "custom",
+      "vpc_name": "dataservices-us-prod",
+      "vpc_ssh_keys": [
+        "ach528-ssh-key"
+      ],
+      "zone-1": "us-east-1",
+      "zone-2": "us-east-2",
+      "zone-3": "us-east-3",
+      "zone1-jmp-cidr": "10.116.24.0/24",
+      "zone1-opscenter-cidr": "10.116.24.0/24",
+      "zone1_cidr": "10.116.24.0/24",
+      "zone2_cidr": "10.116.25.0/24",
+      "zone3_cidr": "10.116.26.0/24"
+    }
+  }
+}

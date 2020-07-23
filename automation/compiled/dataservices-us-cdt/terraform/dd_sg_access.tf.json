@@ -1,0 +1,36 @@
+{
+  "data": {
+    "ibm_schematics_output": {
+      "output": {
+        "template_id": "${data.ibm_schematics_workspace.output.template_id.0}",
+        "workspace_id": "datadog-cdt-bfe381d4-278f-43"
+      }
+    },
+    "ibm_schematics_workspace": {
+      "output": {
+        "workspace_id": "datadog-cdt-bfe381d4-278f-43"
+      }
+    }
+  },
+  "output": {
+    "output_vars": {
+      "value": "${data.ibm_schematics_output.output.output_values}"
+    }
+  },
+  "resource": {
+    "ibm_is_security_group": {
+      "ach528-sg-dd-remote-ds": {
+        "name": "ach528-sg-dd-remote-ds",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}",
+        "vpc": "${data.ibm_is_vpc.vpc1.id}"
+      }
+    },
+    "ibm_is_security_group_rule": {
+      "sg-dd-remote-ds-1": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-dd-remote-ds.id}",
+        "remote": "${data.ibm_schematics_output.output.output_values.agents_ipv4}"
+      }
+    }
+  }
+}

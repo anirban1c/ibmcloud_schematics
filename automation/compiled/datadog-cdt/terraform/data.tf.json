@@ -1,0 +1,17 @@
+{
+  "data": {
+    "datadog_ip_ranges": {
+      "datadog-public-ips": {}
+    },
+    "ibm_is_image": {
+      "ds_image": {
+        "name": "ibm-redhat-7-6-minimal-amd64-1"
+      }
+    },
+    "ibm_resource_group": {
+      "all_rg": {
+        "name": "aop-cdt"
+      }
+    }
+  }
+}

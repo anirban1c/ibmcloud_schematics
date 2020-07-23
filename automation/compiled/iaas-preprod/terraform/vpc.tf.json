@@ -1,0 +1,10 @@
+{
+  "resource": {
+    "ibm_is_vpc": {
+      "dev-vpc": {
+        "name": "dev-vpc",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}"
+      }
+    }
+  }
+}

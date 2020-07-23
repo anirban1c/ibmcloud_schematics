@@ -1,0 +1,182 @@
+parameters:
+    resources:
+      dd_sg_access:
+        - name: ${prefix}-sg-dd-remote-ds
+          rules:
+            - sg-dd-remote-ds:
+              name: sg-dd-remote-ds
+              remote:
+              direction: outbound
+#        - name: ${prefix}-sg-dd1
+#          rules:
+#            - dd-out-1:
+#              name: dd-out-1
+#              remote: 34.107.172.23/32
+#              direction: outbound
+#
+#            - dd-out-2:
+#              name: dd-out-2
+#              remote: 35.190.30.199/32
+#              direction: outbound
+#
+#            - dd-out-3:
+#              name: dd-out-3
+#              remote: 35.190.78.95/32
+#              direction: outbound
+#
+#            - dd-out-4:
+#              name: dd-out-4
+#              remote: 34.95.82.189/32
+#              direction: outbound
+#
+#            - dd-out-5:
+#              name: dd-out-5
+#              remote: 34.95.82.189/32
+#              direction: outbound
+#
+#            - dd-out-6:
+#              name: dd-out-6
+#              remote: 35.198.166.116/32
+#              direction: outbound
+#
+#            - dd-out-7:
+#              name: dd-out-7
+#              remote: 13.114.211.96/32
+#              direction: outbound
+
+      access:
+        - name: ${prefix}-sg-rule1
+          rules:
+            - udp-in:
+              name: udp-in
+              remote: 0.0.0.0/0
+              direction: inbound
+              proto: tcp
+              port_min: "53"
+              port_max: "53"
+            - udp-out:
+              name: udp-out
+              remote: 0.0.0.0/0
+              direction: outbound
+              proto: udp
+              port_min: "53"
+              port_max: "53"
+#            - icmp-in:
+#              name: icmp-in
+#              remote: 0.0.0.0/0
+#              direction: inbound
+#              proto: icmp
+#              type: 8
+#              code: 0
+            - ssh-in:
+              name: ssh-in
+              remote: 0.0.0.0/0
+              direction: inbound
+              proto: tcp
+              port_min: "22"
+              port_max: "22"
+            - https-out:
+              name: https-out
+              remote: 0.0.0.0/0
+              direction: outbound
+              proto: tcp
+              port_min: "443"
+              port_max: "443"
+            - https-in:
+              name: http-in
+              remote: 0.0.0.0/0
+              direction: inbound
+              proto: tcp
+              port_min: "80"
+              port_max: "80"
+            - https-out:
+              name: http-out
+              remote: 0.0.0.0/0
+              direction: outbound
+              proto: tcp
+              port_min: "80"
+              port_max: "80"
+              ### cassandra csql in from everywhere
+            - cass-csql:
+              name: cass-csql
+              remote: 0.0.0.0/0
+              direction: inbound
+              proto: tcp
+              port_min: "4092"
+              port_max: "4092"
+              ### in from all all other vpc subnets
+            - us-vpc-3-in:
+              name: us-vpc-3-in
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-3}
+              direction: inbound
+            - us-vpc-2-in:
+              name: us-vpc-2-in
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-2}
+              direction: inbound
+            - us-vpc-1-in:
+              name: us-vpc-1-in
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-1}
+              direction: inbound
+            - eu-vpc-3-in:
+              name: eu-vpc-3-in
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-3}
+              direction: inbound
+            - eu-vpc-2-in:
+              name: eu-vpc-2-in
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-2}
+              direction: inbound
+            - eu-vpc-1-in:
+              name: eu-vpc-1-in
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-1}
+              direction: inbound
+            - jp-vpc-3-in:
+              name: jp-vpc-3-in
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-3}
+              direction: inbound
+            - jp-vpc-2-in:
+              name: jp-vpc-2-in
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-2}
+              direction: inbound
+            - jp-vpc-1-in:
+              name: jp-vpc-1-in
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-1}
+              direction: inbound
+              ### in from all all other vpc subnets
+            ### out to all all other vpc subnets
+            - us-vpc-3-out:
+              name: us-vpc-3-out
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-3}
+              direction: outbound
+            - us-vpc-2-out:
+              name: us-vpc-2-out
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-2}
+              direction: outbound
+            - us-vpc-1-out:
+              name: us-vpc-1-out
+              remote: ${envs:vpcs:regions:us-east:cidrs:us-east-1}
+              direction: outbound
+            - eu-vpc-3-out:
+              name: eu-vpc-3-out
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-3}
+              direction: outbound
+            - eu-vpc-2-out:
+              name: eu-vpc-2-out
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-2}
+              direction: outbound
+            - eu-vpc-1-out:
+              name: eu-vpc-1-out
+              remote: ${envs:vpcs:regions:eu-de:cidrs:eu-de-1}
+              direction: outbound
+            - jp-vpc-3-out:
+              name: jp-vpc-3-out
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-3}
+              direction: outbound
+            - jp-vpc-2-out:
+              name: jp-vpc-2-out
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-2}
+              direction: outbound
+            - jp-vpc-1-out:
+              name: jp-vpc-1-out
+              remote: ${envs:vpcs:regions:jp-tok:cidrs:jp-tok-1}
+              direction: outbound
+              ### out to all all other vpc subnets

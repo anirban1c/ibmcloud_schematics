@@ -1,0 +1,201 @@
+{
+  "description": "Workspace for dataservices-emea-prod",
+  "name": "dataservices-emea-prod",
+  "resource_group": "aop-prod",
+  "tags": [
+    "aop-cdt:ach528"
+  ],
+  "template_data": [
+    {
+      "folder": "compiled/dataservices-emea-prod/terraform",
+      "type": "terraform_v0.12",
+      "values_metadata": [
+        {
+          "name": "env",
+          "type": "string"
+        },
+        {
+          "name": "fip_name",
+          "type": "string"
+        },
+        {
+          "name": "image_name",
+          "type": "string"
+        },
+        {
+          "name": "instance_profile",
+          "type": "string"
+        },
+        {
+          "name": "instance_type",
+          "type": "string"
+        },
+        {
+          "name": "prefix",
+          "type": "string"
+        },
+        {
+          "name": "region",
+          "type": "string"
+        },
+        {
+          "name": "resource_group_name",
+          "type": "string"
+        },
+        {
+          "name": "source",
+          "type": "string"
+        },
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "timeout_create",
+          "type": "string"
+        },
+        {
+          "name": "timeout_delete",
+          "type": "string"
+        },
+        {
+          "name": "volume_capacity",
+          "type": "string"
+        },
+        {
+          "name": "volume_iops",
+          "type": "string"
+        },
+        {
+          "name": "volume_profile",
+          "type": "string"
+        },
+        {
+          "name": "vpc_name",
+          "type": "string"
+        },
+        {
+          "name": "vpc_ssh_keys",
+          "type": "string"
+        },
+        {
+          "name": "zone1-jmp-cidr",
+          "type": "string"
+        },
+        {
+          "name": "zone1-opscenter-cidr",
+          "type": "string"
+        },
+        {
+          "name": "zone1_cidr",
+          "type": "string"
+        },
+        {
+          "name": "zone2_cidr",
+          "type": "string"
+        },
+        {
+          "name": "zone3_cidr",
+          "type": "string"
+        }
+      ],
+      "variablestore": [
+        {
+          "name": "env",
+          "value": "prod"
+        },
+        {
+          "name": "fip_name",
+          "value": "ach528-fip"
+        },
+        {
+          "name": "image_name",
+          "value": "ibm-redhat-7-6-minimal-amd64-1"
+        },
+        {
+          "name": "instance_profile",
+          "value": "cx2-2x4"
+        },
+        {
+          "name": "instance_type",
+          "value": "dataservices"
+        },
+        {
+          "name": "prefix",
+          "value": "ach528"
+        },
+        {
+          "name": "region",
+          "value": "eu-de"
+        },
+        {
+          "name": "resource_group_name",
+          "value": "aop-prod"
+        },
+        {
+          "name": "source",
+          "value": "../../../tf-modules/tf-vpc-module-with-bastion"
+        },
+        {
+          "name": "tag",
+          "value": "ach528-aop-prod"
+        },
+        {
+          "name": "timeout_create",
+          "value": "10m"
+        },
+        {
+          "name": "timeout_delete",
+          "value": "10m"
+        },
+        {
+          "name": "volume_capacity",
+          "value": "100"
+        },
+        {
+          "name": "volume_iops",
+          "value": "1000"
+        },
+        {
+          "name": "volume_profile",
+          "value": "custom"
+        },
+        {
+          "name": "vpc_name",
+          "value": "dataservices-emea-prod"
+        },
+        {
+          "name": "vpc_ssh_keys",
+          "value": "[\"mbo200-sshkey\", \"ach528-ssh-key\", \"andreb-sshkey\", \"opscadmin-sshkey\", \"abl048-sshkey\", \"ddt010-sshkey\", \"eho057-sshkey\", \"tch166-sshkey\"]"
+        },
+        {
+          "name": "zone1-jmp-cidr",
+          "value": "10.116.19.0/24"
+        },
+        {
+          "name": "zone1-opscenter-cidr",
+          "value": "10.116.19.0/24"
+        },
+        {
+          "name": "zone1_cidr",
+          "value": "10.116.19.0/24"
+        },
+        {
+          "name": "zone2_cidr",
+          "value": "10.116.20.0/24"
+        },
+        {
+          "name": "zone3_cidr",
+          "value": "10.116.21.0/24"
+        }
+      ]
+    }
+  ],
+  "template_repo": {
+    "branch": "master",
+    "url": "https://eu-de.git.cloud.ibm.com/iaas/dataservices"
+  },
+  "type": [
+    "terraform_v0.12"
+  ]
+}

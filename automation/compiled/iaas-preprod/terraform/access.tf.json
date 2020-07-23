@@ -1,0 +1,166 @@
+{
+  "resource": {
+    "ibm_is_security_group": {
+      "ach528-sg-rule1": {
+        "name": "ach528-sg-rule1",
+        "resource_group": "${data.ibm_resource_group.all_rg.id}",
+        "vpc": "${ibm_is_vpc.dev-vpc.id}"
+      }
+    },
+    "ibm_is_security_group_rule": {
+      "cass-csql": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "4092",
+          "port_min": "4092"
+        }
+      },
+      "eu-vpc-1-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.10.0/24"
+      },
+      "eu-vpc-1-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.10.0/24"
+      },
+      "eu-vpc-2-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.11.0/24"
+      },
+      "eu-vpc-2-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.11.0/24"
+      },
+      "eu-vpc-3-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.12.0/24"
+      },
+      "eu-vpc-3-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.12.0/24"
+      },
+      "http-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "80",
+          "port_min": "80"
+        }
+      },
+      "http-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "80",
+          "port_min": "80"
+        }
+      },
+      "https-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "443",
+          "port_min": "443"
+        }
+      },
+      "jp-vpc-1-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.13.0/24"
+      },
+      "jp-vpc-1-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.13.0/24"
+      },
+      "jp-vpc-2-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.14.0/24"
+      },
+      "jp-vpc-2-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.14.0/24"
+      },
+      "jp-vpc-3-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.15.0/24"
+      },
+      "jp-vpc-3-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.15.0/24"
+      },
+      "ssh-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "22",
+          "port_min": "22"
+        }
+      },
+      "udp-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "tcp": {
+          "port_max": "53",
+          "port_min": "53"
+        }
+      },
+      "udp-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "0.0.0.0/0",
+        "udp": {
+          "port_max": "53",
+          "port_min": "53"
+        }
+      },
+      "us-vpc-1-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.16.0/24"
+      },
+      "us-vpc-1-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.16.0/24"
+      },
+      "us-vpc-2-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.17.0/24"
+      },
+      "us-vpc-2-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.17.0/24"
+      },
+      "us-vpc-3-in": {
+        "direction": "inbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.18.0/24"
+      },
+      "us-vpc-3-out": {
+        "direction": "outbound",
+        "group": "${ibm_is_security_group.ach528-sg-rule1.id}",
+        "remote": "10.116.18.0/24"
+      }
+    }
+  }
+}

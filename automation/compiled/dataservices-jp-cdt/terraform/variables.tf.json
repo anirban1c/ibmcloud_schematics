@@ -1,0 +1,64 @@
+{
+  "variable": {
+    "env": {
+      "default": "cdt"
+    },
+    "fip_name": {
+      "default": "ach528-fip"
+    },
+    "image_name": {
+      "default": "ibm-redhat-7-6-minimal-amd64-1"
+    },
+    "instance_profile": {
+      "default": "cx2-2x4"
+    },
+    "instance_type": {
+      "default": "dataservices"
+    },
+    "prefix": {
+      "default": "ach528"
+    },
+    "region": {
+      "default": "jp-tok"
+    },
+    "resource_group_name": {
+      "default": "aop-preprod"
+    },
+    "tag": {
+      "default": "ach528-aop-cdt"
+    },
+    "timeout_create": {
+      "default": "var.timeout_create"
+    },
+    "volume_capacity": {
+      "default": "100"
+    },
+    "volume_iops": {
+      "default": "1000"
+    },
+    "volume_profile": {
+      "default": "custom"
+    },
+    "vpc_name": {
+      "default": "jp-ds-vpc1"
+    },
+    "vpc_ssh_keys": {
+      "default": "var.vpc_ssh_keys.*"
+    },
+    "zone1-jmp-cidr": {
+      "default": "10.116.4.0/24"
+    },
+    "zone1-opscenter-cidr": {
+      "default": "10.116.4.0/24"
+    },
+    "zone1_cidr": {
+      "default": "10.116.4.0/24"
+    },
+    "zone2_cidr": {
+      "default": "10.116.5.0/24"
+    },
+    "zone3_cidr": {
+      "default": "10.116.6.0/24"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "output": {
+    "agents_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.agents_ipv4})[0]"
+    },
+    "agents_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.agents_ipv6})[0]"
+    },
+    "api_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.api_ipv4})[0]"
+    },
+    "api_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.api_ipv6})[0]"
+    },
+    "apm_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.apm_ipv4})[0]"
+    },
+    "apm_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.apm_ipv6})[0]"
+    },
+    "logs_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.logs_ipv4})[0]"
+    },
+    "logs_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.logs_ipv6})[0]"
+    },
+    "process_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.process_ipv4})[0]"
+    },
+    "process_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.process_ipv6})[0]"
+    },
+    "synthetics_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.synthetics_ipv4})[0]"
+    },
+    "synthetics_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.synthetics_ipv6})[0]"
+    },
+    "webhooks_ipv4": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.webhooks_ipv4})[0]"
+    },
+    "webhooks_ipv6": {
+      "value": "tolist(${data.datadog_ip_ranges.datadog-public-ips.webhooks_ipv6})[0]"
+    }
+  }
+}
