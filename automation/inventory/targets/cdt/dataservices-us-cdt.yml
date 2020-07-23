@@ -10,7 +10,7 @@ parameters:
     name: dataservices-us-cdt
     region: us-east
     env: cdt
-    tags: "aop-cdt:ach528"
+    tags: "aop-cdt:dddd528"
 
     provider:
       datadog:

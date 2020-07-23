@@ -7,7 +7,7 @@ parameters:
   name: datadog-cdt
   region: eu-de
   env: cdt
-  tags: "aop-cdt:ach528"
+  tags: "aop-cdt:xxx528"
 
   provider:
       ipv4_ranges:

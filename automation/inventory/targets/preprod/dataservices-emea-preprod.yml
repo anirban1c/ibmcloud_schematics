@@ -10,7 +10,7 @@ parameters:
     name: dataservices-emea-preprod
     region: eu-de
     env: preprod
-    tags: "aop-cdt:ach528"
+    tags: "aop-preprod:ffff-528"
 
     kapitan:
       labels:

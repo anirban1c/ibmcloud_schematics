@@ -10,7 +10,7 @@ parameters:
     name: dataservices-us-prod
     region: us-east
     env: prod
-    tags: "aop-cdt:ach528"
+    tags: "aop-prod:each528"
 
 
     kapitan:

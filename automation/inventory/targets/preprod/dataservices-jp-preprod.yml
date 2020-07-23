@@ -10,7 +10,7 @@ parameters:
     name: dataservices-jp-preprod
     region: jp-tok
     env: preprod
-    tags: "aop-cdt:ach528"
+    tags: "aop-preprod:bbbb528"
 
 
     kapitan:

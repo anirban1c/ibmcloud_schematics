@@ -10,7 +10,7 @@ parameters:
     name: dataservices-emea-prod
     region: eu-de
     env: prod
-    tags: "aop-cdt:ach528"
+    tags: "aop-prod:erach528"
 
     kapitan:
       labels:

@@ -44,6 +44,7 @@ dependencies:
   - zeromq
   - zlib
   - pip:
+    - kapitan
     - addict
     - allure-behave
     - allure-pytest

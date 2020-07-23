@@ -1,0 +1,21 @@
+{
+  "description": "Workspace for iaas-preprod",
+  "name": "iaas-preprod",
+  "resource_group": "aop-preprod",
+  "tags": [
+    "aop-prerod:dfs528"
+  ],
+  "template_data": [
+    {
+      "folder": "compiled/iaas-preprod/terraform",
+      "type": "terraform_v0.12"
+    }
+  ],
+  "template_repo": {
+    "branch": "master",
+    "url": "https://eu-de.git.cloud.ibm.com/iaas/dataservices"
+  },
+  "type": [
+    "terraform_v0.12"
+  ]
+}

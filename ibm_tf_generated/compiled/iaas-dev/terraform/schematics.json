@@ -1,0 +1,21 @@
+{
+  "description": "Workspace for iaas-dev",
+  "name": "iaas-dev",
+  "resource_group": "aop-preprod",
+  "tags": [
+    "aop-cdt:gggg528"
+  ],
+  "template_data": [
+    {
+      "folder": "compiled/iaas-dev/terraform",
+      "type": "terraform_v0.12"
+    }
+  ],
+  "template_repo": {
+    "branch": "master",
+    "url": "https://eu-de.git.cloud.ibm.com/iaas/dataservices"
+  },
+  "type": [
+    "terraform_v0.12"
+  ]
+}

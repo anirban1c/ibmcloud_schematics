@@ -10,7 +10,7 @@ parameters:
     name: dataservices-jp-cdt
     region: jp-tok
     env: cdt
-    tags: "aop-cdt:ach528"
+    tags: "aop-cdt:zzz528"
 
 
     kapitan:

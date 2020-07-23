@@ -7,7 +7,7 @@ parameters:
   name: datadog-prod
   region: eu-de
   env: prod
-  tags: "aop-cdt:ach528"
+  tags: "aop-prod:ache528"
   provider:
     datadog:
       remote_ds:

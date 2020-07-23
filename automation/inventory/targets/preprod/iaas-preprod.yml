@@ -9,7 +9,7 @@ parameters:
   region: eu-de
   zone : eu-de-1
   env: preprod
-  tags: "aop-cdt:ach528"
+  tags: "aop-prerod:dfs528"
   timeouts:
     create: 10m
     delete: 10m

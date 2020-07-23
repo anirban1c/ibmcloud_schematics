@@ -10,7 +10,7 @@ parameters:
     name: dataservices-us-preprod
     region: us-east
     env: preprod
-    tags: "aop-cdt:ach528"
+    tags: "aop-preprod:dfg528"
 
 
     kapitan:
